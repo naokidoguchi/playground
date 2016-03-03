@@ -14,36 +14,24 @@ $(function() {
 
 });
 
+
 // magnification
 $(function() {
 
-	var $area01 = $('.thumbnail--01');
-	var $area02 = $('.thumbnail--02');
-	var $area03 = $('.thumbnail--03');
+var open = function(event){
+	event.data.fadeIn();
+}
 
-	var $img01 = $('.js-modal--01');
-	var $img02 = $('.js-modal--02');
-	var $img03 = $('.js-modal--03');
+var close = function(event){
+	event.data.fadeOut();
+}
 
-	$area01.on('click', function() {
-		$img01.fadeIn();
-	});
-	$img01.on('click', function() {
-		$img01.fadeOut();
-	});
-	
-	$area02.on('click', function() {
-		$img02.fadeIn();
-	});
-	$img02.on('click', function() {
-		$img02.fadeOut();
-	});
+$('.thumbnail--01').on('click', $('.js-modal--01'), open );
+$('.thumbnail--02').on('click', $('.js-modal--02'), open );
+$('.thumbnail--03').on('click', $('.js-modal--03'), open );
 
-	$area03.on('click', function() {
-		$img03.fadeIn();
-	});
-	$img03.on('click', function() {
-		$img03.fadeOut();
-	});
+$('.js-modal--01').on('click', $('.js-modal--01'), close );
+$('.js-modal--02').on('click', $('.js-modal--02'), close );
+$('.js-modal--03').on('click', $('.js-modal--03'), close );
 
 });
