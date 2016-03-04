@@ -15,7 +15,7 @@ body {
 h1 {
 	margin: 30px;
     font-size: 50px;
-    color: cadetblue;
+    color: #AFB6C7;
 }
 
 li {
@@ -50,10 +50,12 @@ button {
 }
 
 .close {
-	position: absolute;
-    right: 30px;
-    top: 30px;
-    width: 30px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: white;
+    font-size: 50px;
+    cursor: pointer;
 }
 
 /* magnification */
