@@ -18,12 +18,12 @@ $(function() {
 // magnification
 $(function() {
 
-var open = function(event){
-	event.data.fadeIn();
+var open = function(e){
+	e.data.fadeIn();
 }
 
-var close = function(event){
-	event.data.fadeOut();
+var close = function(e){
+	e.data.fadeOut();
 }
 
 $('.thumbnail--01').on('click', $('.js-modal--01'), open );
