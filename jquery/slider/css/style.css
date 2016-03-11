@@ -29,19 +29,21 @@ img {
 }
 
 /* slider */
-.js-slider__item {
+.js-slider {
+	width: 300px;
+	height: 215px;
+	margin: 0 auto;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.slider {
+	clear: both;
+	width: 900px;
+	position: relative;
+	left: 0;
+}
+
+.slider__item {
 	float: left;
-	position: absolute;
-}
-
-.js-slider__item:nth-child(1) {
-	z-index: 30;
-}
-
-.js-slider__item:nth-child(2) {
-	z-index: 20;
-}
-
-.js-slider__item:nth-child(3) {
-	z-index: 10;
 }
