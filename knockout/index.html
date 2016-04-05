@@ -23,7 +23,7 @@
         var self = this;
         self.sei = ko.observable(sei);
         self.mei = ko.observable(mei);
-        self.seiNum = ko.observable()
+        self.seiNum = ko.observable();
         self.comment = ko.observable(false);
 
         //ComputedObservable
@@ -35,7 +35,6 @@
 
         self.comment.fullName = ko.computed(function() {
           return self.sei() + " " + self.mei();
-
         });
 
         self.seiNum = ko.computed(function() {
