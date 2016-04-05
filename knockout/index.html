@@ -2,24 +2,54 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-
     <script src="knockout-3.4.0.js"></script>
     <script src="practice.js"></script>
   </head>
   <body>
-<!--     <input type="text" data-bind="value: message">
-  	<button id="button">...</button>
-  	<div data-bind="text: message"></div> -->
-  	<!-- <span data-bind="html: message">isTrue</span> -->
+    <!-- 名前入力 -->
+    <section>
+      <p>☆姓名を入力してください☆</p>
+      <div>
+        <span>姓：<input data-bind="value: sei" /></span>&nbsp;<span data-bind="text: seiNum"></span>文字
+      </div>
+      <div>
+        <span>名：<input data-bind="value: mei" /></span>&nbsp;<span data-bind="text: meiNum"></span>文字
+      </div>
+      <div data-bind="visible: comment">
+        ようこそ、<span data-bind="text: comment.fullName"></span>&nbsp;さん
+      </div>
+    </section>
+    <script type="text/javascript">
+      var viewModel = function(sei, mei) {
+        var self = this;
+        self.sei = ko.observable(sei);
+        self.mei = ko.observable(mei);
+        self.seiNum = ko.observable()
+        self.comment = ko.observable(false);
 
- 	<input type="text" data-bind="value: message">
-  	<button id="button">push!</button>
-	<div data-bind="text: message"></div>
+        //ComputedObservable
+        self.comment = ko.computed(function() {
+          if(self.sei().length > 0 && self.mei().length > 0) {
+            return true;
+          }
+        });
 
-  	<ul data-bind="foreach: array">
-  		<li data-bind="text: $data"></li>
-  	</ul>
+        self.comment.fullName = ko.computed(function() {
+          return self.sei() + " " + self.mei();
 
-  	<button id="remove">remove</button>hennkou
+        });
+
+        self.seiNum = ko.computed(function() {
+          return self.sei().length;
+        });
+
+        self.meiNum = ko.computed(function() {
+          return self.mei().length;
+        });
+
+      };
+      ko.applyBindings(new viewModel("",""));
+    </script>
+    <!-- //名前入力 -->
   </body>
 </html>
