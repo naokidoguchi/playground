@@ -55,6 +55,13 @@ class Main extends React.Component {
         onTouchTap={this.handleRequestClose}
       />
     );
+    const standardHouse = (
+      <FlatButton
+        label="Ok"
+        secondary={true}
+        onTouchTap={this.handleRequestClose}
+      />
+    );
 
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -67,11 +74,11 @@ class Main extends React.Component {
           >
             1-2-3-4-5
           </Dialog>
-          <h1>material-ui</h1>
-          <h2>example project</h2>
+          <h1>くまおの森</h1>
+          <h2>これからMaterialUIでなんか作ってくよーん└('ω')┘</h2>
           <RaisedButton
-            label="Super Secret Password"
-            primary={true}
+            label=".｡*ﾟ+.*.｡　ログイン　ﾟ+..｡*ﾟ+"
+            primary={false}
             onTouchTap={this.handleTouchTap}
           />
         </div>
