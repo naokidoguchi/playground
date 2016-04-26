@@ -72,10 +72,9 @@ class Main extends React.Component {
             actions={standardActions}
             onRequestClose={this.handleRequestClose}
           >
-            1-2-3-4-5
           </Dialog>
           <h1>くまおの森</h1>
-          <h2>これからMaterialUIでなんか作ってくよーん└('ω')┘</h2>
+          <h2>これからMaterialUIでなんか作ってくよん('ω')</h2>
           <RaisedButton
             label=".｡*ﾟ+.*.｡　ログイン　ﾟ+..｡*ﾟ+"
             primary={false}
