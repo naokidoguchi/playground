@@ -1,6 +1,5 @@
-const gulp = require('gulp');
-const webserver = require('gulp-webserver');
-const mustache = require("gulp-mustache");
+var gulp = require('gulp');
+var webserver = require('gulp-webserver');
 
 gulp.task('webserver', function () {
   gulp.src('dist')
@@ -9,4 +8,8 @@ gulp.task('webserver', function () {
         port: 8000,
         livereload: true
     }));
+});
+
+gulp.task('default', ['webserver'], function() {
+  console.log('きたか…!!\n　 ( ﾟдﾟ)　ｶﾞﾀｯ\n　 /　　 ヾ\n＿_L| /￣￣￣/＿\n　 ＼/　　　/');
 });
