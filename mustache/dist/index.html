@@ -4,13 +4,25 @@
   <meta charset="UTF-8">
   <title>hoge</title>
   <script src="jquery-1.12.1.min.js"></script>
+  <script src="mustache.min.js"></script>
   <script src="app.js"></script>
+  <style>
+  <!--
+  body {
+    background: cadetblue;
+  }
+  #target1 {
+    color: pink;
+    margin-bottom: 20px;
+  }
+  #target2 {
+    color: lightblue;
+  }
+  -->
+  </style>
 </head>
 <body>
-  <script type="text/hoge">
-    {{#response}}
-      Hi {{name}}!!!!
-    {{/response}}
-  </script>
+  <div id="target1">Loading...</div>
+  <ul id="target2">Loading...</ul>
 </body>
 </html>
