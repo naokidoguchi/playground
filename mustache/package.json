@@ -9,6 +9,5 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp-webserver": "^0.9.1",
   }
 }
