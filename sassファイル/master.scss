@@ -6,6 +6,10 @@ html,body {
   font-size: 14px;
 }
 
+input,button {
+  outline: none;
+}
+
 #wrapper {
   width: 100%;
   height: auto;
@@ -17,11 +21,8 @@ html,body {
 
     #inputBox {
       color: white;
-
-      input {
-
-      }
-      
+      text-align: center;
+      margin-top: 100px;
     }
 
     #questionBox {
@@ -57,6 +58,7 @@ html,body {
   }
 
   #text {
+    position: relative;
     color: white;
     border: 1px solid white;
     box-sizing: border-box;
@@ -67,4 +69,36 @@ html,body {
     background: rgba(255,255,255,0.3);
   }
 
+}
+
+// ブロック要素に
+.block {
+  display: block;
+}
+
+// フォームテキストボックス
+.inputText {
+  width: 150px;
+  height: 20px;
+  padding: 2px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+// OKボタン
+.ok {
+  margin: 20px auto 0;
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: pink;
+  border-radius: 50px;
+  box-shadow: 1px 1px rgba(210,100,150,1);
+}
+
+// ▽ボタン
+.next {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
 }
