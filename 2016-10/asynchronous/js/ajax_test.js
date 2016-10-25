@@ -29,9 +29,9 @@
     }
      
      function render(json) {
-         document.getElementById('post_title').textContent = json.wp5_posts.post_title;
-         document.getElementById('post_date').textContent = json.wp5_posts.post_date;
-         document.getElementById('post_content').textContent = json.wp5_posts.post_content;
+         document.getElementById('post_title').textContent = json.post_title;
+         document.getElementById('post_date').textContent = json.post_date;
+         document.getElementById('post_content').textContent = json.post_content;
      }
 
      window.addEventListener('DOMContentLoaded', function() {
