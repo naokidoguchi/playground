@@ -21,8 +21,7 @@
                 document.write('エラー' + xhr.status);
             }
           }
-
-        //   if(xhr.readyState === 3) {
+        //   else if(xhr.readyState === 3) {
         //     document.write('受信中....');
         //   }
       }
