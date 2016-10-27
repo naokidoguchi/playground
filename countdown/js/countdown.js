@@ -1,45 +1,31 @@
 ;(function (window){
-
-function setCountDown(remainTime, test) {
-    var nowTime,
-        _remain,
-        endTime;
-            
-    console.log(test);  
-    test.innerText = remainTime;
-    
-    var timerId = setTimeout(countDown, 500);
-    function countdown() {
-        remainTime = remainTime - 1000;
-        test.innerText = remainTime;
-        timerId = setTimeout(countDown, 500);
-    } 
-}
-
-function countDown(remainTime) {
-}
+    var int,
+        test,
+        remainTime,
+        timerId;
 
 function init() {
-    var test,
-        remainTime;
-
     test = document.getElementById('js-timer');
     remainTime = test.getAttribute('data-remaintime');
-    setCountDown(remainTime,test);
-    console.log(remainTime, test);
-    
+    int = parseInt(remainTime);
+    test.innerHTML = int;
+    timerId = setInterval(setCountDown, 1000);     
 }
+
+function setCountDown() {
+    int = int - 1000;
+    test = document.getElementById('js-timer');
+    test.innerHTML = int;
+    console.log(int > 0);
+    if(int <= 0) {
+        clearInterval(timerId);
+    }
+}
+
 window.onload = function() {
     init();
 };
 
 })(window);
-
-// ;(function init() {
-//     var timerset = 60000,
-//         elem =  ;
-// });
-
-// init();
 
 //# sourceMappingURL=countdown.js.map
