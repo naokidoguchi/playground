@@ -3,12 +3,14 @@
         timerArea,
         remainTime,
         timerId;
+        // 変数は最小限に。
 
     function init() {
         timerArea = document.getElementById('js-timer');
         remainTime = timerArea.getAttribute('data-remaintime');
         // remainTime = Number(timerArea.getAttribute('data-remaintime'));
         int = parseInt(remainTime);
+        // ここで新たに変数を作るのはやめよう。remainTimeで上書きが美しい。
         render(computeDuration());
         timerId = setInterval(setCountDown, 1000);  
     }
@@ -33,6 +35,7 @@
         h = '' + (int / 36000 | 0) + (int / 3600 % 10 | 0);
         m = '' + (int % 3600 / 600 | 0) + (int % 3600 / 60 % 10 | 0);
         s = '' + (int % 60 / 10 | 0) + (int % 60 % 10); 
+        // |は少数をカットするらしい。
         return h + '時間' + m + '分' + s + '秒';
     }
 
