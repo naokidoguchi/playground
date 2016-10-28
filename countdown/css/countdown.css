@@ -1,5 +1,5 @@
-#js-timer {
-    margin-top: 50px;
+#js-timer, #js-stopwatch {
+    margin: 50px 0;
     text-align: center;
     font-size: 26px;
 }
