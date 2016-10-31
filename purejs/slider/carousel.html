@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>スライダー</title>
+</head>
+<body>
+
+<!-- CSS -->
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+.viewArea {
+    width: 500px;
+    height: 280px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+.imgs {
+    width: 10000px;
+}
+.carousel-item {
+    list-style-type: none;
+    float: left;
+}
+.carousel-move {
+    width: 10000px;
+    -webkit-transition: transform 300ms ease-out;
+    transition: transform 300ms ease-out;
+}
+</style>
+<!-- /CSS -->
+
+<!-- JavaScript -->
+<script>
+;(function(window) {
+    var imgs, imgLi, wait, move;
+
+    function init() {
+        imgs = document.getElementById('js-carousel');
+        imgLi = document.getElementsByClassName('js-carousel-item');
+        setCarouselEvent(imgLi.length-1, 1);
+    }
+
+    function setCarouselEvent(max, i) {
+        wait = imgs.getAttribute('data-carousel-wait') || 500;
+        if(i === imgLi.length) {
+            i = 0;
+        }
+        if(i <= max) {
+            setTimeout(function() {
+                imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
+                setCarouselEvent(max, ++i)
+            }, Number(wait));
+        }
+    }
+
+    addEventListener('DOMContentLoaded', function() {
+        init();
+    });
+
+})(window);
+</script>
+<!--/JavaScript-->
+
+    <div class="viewArea">
+        <ul id="js-carousel" class="carousel-move" data-carousel-wait="1000">
+            <li class="carousel-item js-carousel-item"><img src="img/haro1.jpg" width="500" height="280" alt=""></li>
+            <li class="carousel-item js-carousel-item"><img src="img/haro2.jpg" width="500" height="280" alt=""></li>
+            <li class="carousel-item js-carousel-item"><img src="img/haro3.jpg" width="500" height="280" alt=""></li>
+        </ul>
+    </div>
+    <div class="btnArea">
+        <div id="prev" class="prev">＜</div>
+        <div id="next" class="next">＞</div>
+    </div>
+</body>
+</html>
