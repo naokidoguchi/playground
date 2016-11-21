@@ -5,16 +5,127 @@
     <title>Document</title>
 </head>
 <body>
+
+<!-- CSS -->
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+.viewArea {
+    width: 500px;
+    height: 280px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+.imgs {
+    width: 10000px;
+}
+.carousel-item {
+    list-style-type: none;
+    float: left;
+}
+.carousel-move {
+    width: 10000px;
+    -webkit-transition: transform 300ms ease-out;
+    transition: transform 300ms ease-out;
+}
+.controlArea {
+    width: 95px;
+    height: 100px;
+    margin: 0 auto;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+.control-circle {
+    list-style-type: none;
+}
+.control-circle:after {
+    content: "○";
+}
+.current:after {
+    content: "◉";
+}
+.prev {
+    position: absolute;
+    top: 160px;
+    left: 280px;
+    font-size: 40px;
+    cursor: pointer;
+}
+.next {
+    position: absolute;
+    top: 160px;
+    right: 280px;
+    font-size: 40px;
+    cursor: pointer;
+}
+</style>
+<!-- /CSS -->
+
+<!-- JavaScript -->
+<script>
+;(function(window) {
+    var imgs, imgLi, wait, move, cntr, elem;
+    var prev, next;
+
+    function init() {
+        imgs = document.getElementById('js-carousel');
+        imgLi = document.getElementsByClassName('js-carousel-item');
+        cntr = document.getElementById('js-page-control');
+        prev = document.getElementById('prev');
+        next = document.getElementById('next');
+        for(var i = 0; i <= imgLi.length-1; i++) {
+            elem = document.createElement('li'); 
+            elem.class = "control-circle"; 
+            cntr.appendChild(elem);
+        }
+        setCarouselEvent(imgLi.length, 0);
+    }
+
+    function setCarouselEvent(max, i) {
+        wait = imgs.getAttribute('data-carousel-wait') || 5000;
+        if(i === max) {
+            i = 0;
+            cntr.children[i].setAttribute('class','control-circle current');
+            cntr.children[0].setAttribute('class','control-circle');
+        }
+        if(i <= max) {
+            setTimeout(function() {
+                for(var r = 0; r <= imgLi.length-1; r++){
+                    cntr.children[r].setAttribute('class','control-circle');
+                }
+                imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
+                cntr.children[i].setAttribute('class','control-circle current');
+                setCarouselEvent(max, ++i);
+            }, Number(wait));
+        }
+    }
+    
+
+    addEventListener('DOMContentLoaded', function() {
+        init();
+    });
+
+})(window);
+</script>
+<!--/JavaScript-->
+
     <div class="viewArea">
-        <ul id="js-carousel" class="carousel-move" data-carousel-wait="1000">
+        <ul id="js-carousel" class="carousel-move" data-carousel-wait="10000">
             <li class="carousel-item js-carousel-item"><img src="img/haro1.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro2.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro3.jpg" width="500" height="280" alt=""></li>
+            <li class="carousel-item js-carousel-item"><img src="img/haro4.jpg" width="500" height="280" alt=""></li>
         </ul>
     </div>
+    <ul class="controlArea" id="js-page-control">
+    </ul>
     <div class="btnArea">
-        <div id="prev" class="prev">＜</div>
-        <div id="next" class="next">＞</div>
+        <div id="prev" class="prev" onClick="">＜</div>
+        <div id="next" class="next" onClick="">＞</div>
     </div>
 </body>
 </html>
