@@ -67,29 +67,36 @@
 
 <!-- JavaScript -->
 <script>
+var imgs, imgLi, wait, move, cntr, elem;
+var i = 0;
 ;(function(window) {
-    var imgs, imgLi, wait, move, cntr, elem;
-    var prev, next;
 
     function init() {
         imgs = document.getElementById('js-carousel');
         imgLi = document.getElementsByClassName('js-carousel-item');
-        cntr = document.getElementById('js-page-control');
-        prev = document.getElementById('prev');
-        next = document.getElementById('next');
-        for(var i = 0; i <= imgLi.length-1; i++) {
-            elem = document.createElement('li'); 
-            elem.class = "control-circle"; 
-            cntr.appendChild(elem);
-        }
+        addElement();
         setCarouselEvent(imgLi.length, 0);
+        document.getElementById('prev').onclick = function() {
+            clickPrev();
+        };
+        document.getElementById('next').onclick = function() {
+            clickNext();
+        };
     }
 
-    function setCarouselEvent(max, i) {
+    function addElement() {
+        cntr = document.getElementById('js-page-control');
+        for(var i = 0; i <= imgLi.length-1; i++) {
+            elem = document.createElement('li'); 
+            elem.className = "control-circle";
+            cntr.appendChild(elem);
+        }
+    }
+
+    function setCarouselEvent(max) {
         wait = imgs.getAttribute('data-carousel-wait') || 5000;
         if(i === max) {
             i = 0;
-            cntr.children[i].setAttribute('class','control-circle current');
             cntr.children[0].setAttribute('class','control-circle');
         }
         if(i <= max) {
@@ -99,22 +106,43 @@
                 }
                 imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
                 cntr.children[i].setAttribute('class','control-circle current');
-                setCarouselEvent(max, ++i);
+                setCarouselEvent(max);
             }, Number(wait));
         }
     }
-    
 
     addEventListener('DOMContentLoaded', function() {
         init();
     });
 
 })(window);
+
+function clickPrev() {
+    if(i <= imgLi.length-1 && 0 <= i) {
+        imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
+        --i;
+        console.log(i,imgs.style.webkitTransform);
+    } else {
+        i = imgLi.length-1;
+        imgs.style.webkitTransform = 'translateX('+ -(imgLi.length-1) * 500 +'px)';
+    }
+}
+
+function clickNext() {
+    if(i < imgLi.length-1) {
+        ++i;
+        imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';  
+        console.log(i,imgs.style.webkitTransform);
+    } else {
+        i = 0;
+        imgs.style.webkitTransform = 'translateX('+ 0 +'px)'; 
+    }
+}
 </script>
 <!--/JavaScript-->
 
     <div class="viewArea">
-        <ul id="js-carousel" class="carousel-move" data-carousel-wait="10000">
+        <ul id="js-carousel" class="carousel-move" data-carousel-wait="5000">
             <li class="carousel-item js-carousel-item"><img src="img/haro1.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro2.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro3.jpg" width="500" height="280" alt=""></li>
@@ -124,8 +152,8 @@
     <ul class="controlArea" id="js-page-control">
     </ul>
     <div class="btnArea">
-        <div id="prev" class="prev" onClick="">＜</div>
-        <div id="next" class="next" onClick="">＞</div>
+        <button id="prev" class="prev" onclick="clickPrev();">＜</button>
+        <button id="next" class="next" onclick="clickNext();">＞</button>
     </div>
 </body>
 </html>
