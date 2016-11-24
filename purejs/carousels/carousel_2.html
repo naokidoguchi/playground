@@ -113,23 +113,23 @@ var i = 0;
             elem.className = "control circle"+[i];
             cntr.appendChild(elem);
         }
-        // pagecontrolをクリックした時
+        // ページャーをクリックした時
         var clickElement = document.getElementById("js-page-control");
         clickElement.addEventListener("click", function(event) {
-            var $eventClass = event.target.className;
-            var eventClass = Number($eventClass.slice(14,15));
-            if(eventClass == 0) {
+            var $pager = event.target.className;
+            var pager = Number($pager.slice(14,15));
+            if(pager == 0) {
                 imgs.style.webkitTransform = 'translateX('+ 0 +'px)';
                 for(var n = 0; n <= imgLi.length-1; n++) {
                     cntr.children[n].classList.remove('current');
                 }
                 cntr.children[0].classList.add('current');
             } else {
-                imgs.style.webkitTransform = 'translateX('+ -(500 * eventClass) +'px)';
+                imgs.style.webkitTransform = 'translateX('+ -(500 * pager) +'px)';
                 for(var n = 0; n <= imgLi.length-1; n++) {
                     cntr.children[n].classList.remove('current');
                 }
-                cntr.children[eventClass].classList.add('current');
+                cntr.children[pager].classList.add('current');
             }
         },false);
     }
@@ -184,7 +184,7 @@ function clickNext() {
         imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
     } else {
         i = 0;
-        imgs.style.webkitTransform = 'translateX('+ 0 +'px)'; 
+        imgs.style.webkitTransform = 'translateX('+ 0 +'px)';
     }
     cntr.children[i].classList.add('current');
 }
@@ -192,7 +192,7 @@ function clickNext() {
 <!--/JavaScript-->
 
     <div class="viewArea">
-        <ul id="js-carousel" class="carousel-move" data-carousel-wait="5000" data-index="0">
+        <ul id="js-carousel" class="carousel-move" data-carousel-wait="5000">
             <li class="carousel-item js-carousel-item"><img src="img/haro1.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro2.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro3.jpg" width="500" height="280" alt=""></li>
@@ -202,8 +202,8 @@ function clickNext() {
     <ul class="controlArea" id="js-page-control">
     </ul>
     <div class="btnArea">
-        <button id="prev" class="prev">＜</button>
-        <button id="next" class="next">＞</button>
+        <button id="prev" class="prev">◀︎</button>
+        <button id="next" class="next">▶︎</button>
     </div>
 </body>
 </html>
