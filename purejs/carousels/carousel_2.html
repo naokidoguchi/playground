@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>カルーセル2</title>
 </head>
 <body>
 
@@ -39,10 +39,11 @@
     justify-content: space-between;
     -webkit-justify-content: space-between;
 }
-.control-circle {
+.control {
     list-style-type: none;
+    cursor: pointer;
 }
-.control-circle:after {
+.control:after {
     content: "○";
 }
 .current:after {
@@ -74,7 +75,7 @@ var i = 0;
     function init() {
         imgs = document.getElementById('js-carousel');
         imgLi = document.getElementsByClassName('js-carousel-item');
-        addElement();
+        addControlElement();
         setCarouselEvent(imgLi.length, 0);
         document.getElementById('prev').onclick = function() {
             clickPrev();
@@ -84,28 +85,47 @@ var i = 0;
         };
     }
 
-    function addElement() {
+    function addControlElement() {
         cntr = document.getElementById('js-page-control');
         for(var i = 0; i <= imgLi.length-1; i++) {
             elem = document.createElement('li'); 
-            elem.className = "control-circle";
+            elem.className = "control circle"+[i];
             cntr.appendChild(elem);
         }
+        // pagecontrolをクリックした時
+        var clickElement = document.getElementById("js-page-control");
+        clickElement.addEventListener("click", function(event) {
+            var $eventClass = event.target.className;
+            var eventClass = Number($eventClass.slice(14,15));
+            if(eventClass == 0) {
+                imgs.style.webkitTransform = 'translateX('+ 0 +'px)';
+                for(var n = 0; n <= imgLi.length-1; n++) {
+                    cntr.children[n].classList.remove('current');
+                }
+                cntr.children[0].classList.add('current');
+            } else {
+                imgs.style.webkitTransform = 'translateX('+ -(500 * eventClass) +'px)';
+                for(var n = 0; n <= imgLi.length-1; n++) {
+                    cntr.children[n].classList.remove('current');
+                }
+                cntr.children[eventClass].classList.add('current');
+            }
+        },false);
     }
 
     function setCarouselEvent(max, i) {
         wait = imgs.getAttribute('data-carousel-wait') || 5000;
         if(i === max) {
             i = 0;
-            cntr.children[0].setAttribute('class','control-circle');
+            cntr.children[0].classList.remove('current');
         }
         if(i <= max) {
+            imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
+            cntr.children[i].classList.add('current');
             setTimeout(function() {
                 for(var r = 0; r <= imgLi.length-1; r++){
-                    cntr.children[r].setAttribute('class','control-circle');
+                    cntr.children[r].classList.remove('current');
                 }
-                imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
-                cntr.children[i].setAttribute('class','control-circle current');
                 setCarouselEvent(max, ++i);
             }, Number(wait));
         }
@@ -118,33 +138,40 @@ var i = 0;
 })(window);
 
 function clickPrev() {
+    for(var n = 0; n <= imgLi.length-1; n++) {
+        cntr.children[n].classList.remove('current');
+    }
     if(i === 0) {
         i = 4;
     }
-    if(i <= imgLi.length-1 && 0 <= i) {
+    if(i <= imgLi.length-1) {
         --i;
         imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
     } else {
         i = imgLi.length-1;
         imgs.style.webkitTransform = 'translateX('+ -(imgLi.length-1) * 500 +'px)';
     }
+    cntr.children[i].classList.add('current');
 }
 
 function clickNext() {
+    for(var n = 0; n <= imgLi.length-1; n++) {
+        cntr.children[n].classList.remove('current');
+    }
     if(i < imgLi.length-1) {
         ++i;
-        imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';  
-        console.log(i,imgs.style.webkitTransform);
+        imgs.style.webkitTransform = 'translateX('+ -(500 * i) +'px)';
     } else {
         i = 0;
         imgs.style.webkitTransform = 'translateX('+ 0 +'px)'; 
     }
+    cntr.children[i].classList.add('current');
 }
 </script>
 <!--/JavaScript-->
 
     <div class="viewArea">
-        <ul id="js-carousel" class="carousel-move" data-carousel-wait="5000">
+        <ul id="js-carousel" class="carousel-move" data-carousel-wait="5000" data-index="0">
             <li class="carousel-item js-carousel-item"><img src="img/haro1.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro2.jpg" width="500" height="280" alt=""></li>
             <li class="carousel-item js-carousel-item"><img src="img/haro3.jpg" width="500" height="280" alt=""></li>
@@ -154,8 +181,8 @@ function clickNext() {
     <ul class="controlArea" id="js-page-control">
     </ul>
     <div class="btnArea">
-        <button id="prev" class="prev" onclick="clickPrev();">＜</button>
-        <button id="next" class="next" onclick="clickNext();">＞</button>
+        <button id="prev" class="prev">＜</button>
+        <button id="next" class="next">＞</button>
     </div>
 </body>
 </html>
