@@ -45,9 +45,12 @@
 }
 .control:after {
     content: "○";
+    color: skyblue;
 }
 .current:after {
     content: "◉";
+    color: skyblue;
+
 }
 .prev {
     position: absolute;
@@ -55,6 +58,15 @@
     left: 280px;
     font-size: 40px;
     cursor: pointer;
+    border: none;
+    color: aliceblue;
+    background: skyblue;
+    outline: none;
+    border-radius: 10px;
+}
+.prev:active {
+    color: skyblue;
+    background: aliceblue;
 }
 .next {
     position: absolute;
@@ -62,6 +74,15 @@
     right: 280px;
     font-size: 40px;
     cursor: pointer;
+    border: none;
+    color: aliceblue;
+    background: skyblue;
+    outline: none;
+    border-radius: 10px;
+}
+.next:active {
+    color: skyblue;
+    background: aliceblue;
 }
 </style>
 <!-- /CSS -->
