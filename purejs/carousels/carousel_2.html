@@ -87,6 +87,21 @@
 </style>
 <!-- /CSS -->
 
+    <div class="viewArea">
+        <ul id="js-carousel" class="carousel-move" data-carousel-wait="5000">
+            <li class="carousel-item js-carousel-item"><img src="img/haro1.jpg" width="500" height="280" alt=""></li>
+            <li class="carousel-item js-carousel-item"><img src="img/haro2.jpg" width="500" height="280" alt=""></li>
+            <li class="carousel-item js-carousel-item"><img src="img/haro3.jpg" width="500" height="280" alt=""></li>
+            <li class="carousel-item js-carousel-item"><img src="img/haro4.jpg" width="500" height="280" alt=""></li>
+        </ul>
+    </div>
+    <ul class="controlArea" id="js-page-control">
+    </ul>
+    <div class="btnArea">
+        <button id="prev" class="prev">◀︎</button>
+        <button id="next" class="next">▶︎</button>
+    </div>
+
 <!-- JavaScript -->
 <script>
 var imgs, imgLi, wait, move, cntr, elem;
@@ -190,20 +205,5 @@ function clickNext() {
 }
 </script>
 <!--/JavaScript-->
-
-    <div class="viewArea">
-        <ul id="js-carousel" class="carousel-move" data-carousel-wait="5000">
-            <li class="carousel-item js-carousel-item"><img src="img/haro1.jpg" width="500" height="280" alt=""></li>
-            <li class="carousel-item js-carousel-item"><img src="img/haro2.jpg" width="500" height="280" alt=""></li>
-            <li class="carousel-item js-carousel-item"><img src="img/haro3.jpg" width="500" height="280" alt=""></li>
-            <li class="carousel-item js-carousel-item"><img src="img/haro4.jpg" width="500" height="280" alt=""></li>
-        </ul>
-    </div>
-    <ul class="controlArea" id="js-page-control">
-    </ul>
-    <div class="btnArea">
-        <button id="prev" class="prev">◀︎</button>
-        <button id="next" class="next">▶︎</button>
-    </div>
 </body>
 </html>
