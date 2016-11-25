@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>モーダルウィンドウ</title>
+    <title>どんくさいモーダルウィンドウ</title>
 </head>
 <body>
 <!-- CSS -->
@@ -11,27 +11,159 @@
         margin: 0;
         padding: 0;
     }
+    html,body {
+        width: 100%;
+        height: 100%;
+    }
+    .contents {
+        padding-top: 100px;
+    }
     .switch {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
+        display: block;
+        margin: 0 auto;
         width: 100px;
         height: 100px;
     }
+    .bg-wrap {
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        -webkit-transition: all 1s;
+        transition: all 1s;
+    }
+    /* モーダルウィンドウ */
+    .modal-window {
+        display: none;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 500px;
+        height: 300px;
+        padding: 50px 0;
+        text-align: center;
+        background: #c5f7ff;
+        border: 5px solid #6a7498;
+        border-radius: 5px;
+        box-shadow: 2px 10px 10px #000000;
+        overflow: hidden;
+        -webkit-transition: all 1s;
+        transition: all 1s;
+    }
+    .modalWindow div {
+        color: black;
+    }
+    .close {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6a7498;
+    }
+    .text-box {
+        padding: 10px;
+    }
+    /* 表示 */
+    .show {
+        display: block;
+        opacity: 0;
+    }
+    .show-after {
+        opacity: 1;
+    }
+    .close-before {
+        opacity: 0;
+    }
 </style>
 <!-- /CSS -->
+    
+    <div class="contents">
+        <button id="js-switch" class="switch">BUTTON</button>
+    </div>
+
+
+    <div id="js-bgWrap" class="bg-wrap"></div>
+    <div id="js-modalWindow" class="modal-window">
+        <span id="js-close" class="close">×</span>
+        <p class="text-box">
+            モーダルの中身モーダルの中身モーダルの中身モーダルの中身<br>
+            モーダルの中身モーダルの中身モーダルの中身モーダルの中身<br>
+            * * * * * * * * * * * * * * * * * * * * * * * *
+        </p>
+        <img src="../carousels/img/haro4.jpg" width="250" height="140" alt="">
+        <p class="text-box">
+             * * * * * * * * * * * * * * * * * * * * * * *<br>
+            モーダルの中身モーダルの中身モーダルの中身モーダルの中身<br>
+            モーダルの中身モーダルの中身モーダルの中身モーダルの中身
+        </p>
+    </div>
 
 <!-- JavaScript -->
 <script>
+    ;(function(window) {
+
+        function init() {
+            document.getElementById('js-switch').onclick = function() {
+                actionWindowOpen();
+                setTimeout(function() {
+                    actionWindowOpenAfter();
+                }, 0);
+            };
+            document.getElementById('js-close').onclick = function() {
+                actionWindowCloseBefore();
+                setTimeout(function() {
+                    actionWindowClose();
+                }, 500);
+            };
+            document.getElementById('js-bgWrap').onclick = function () {
+                actionWindowCloseBefore();
+                setTimeout(function() {
+                    actionWindowClose();
+                }, 500);
+            };
+        };
+
+        function actionWindowOpen() {
+            document.getElementById('js-modalWindow').classList.toggle('show');
+            document.getElementById('js-bgWrap').classList.toggle('show');
+        };
+
+        function actionWindowOpenAfter() {
+            document.getElementById('js-modalWindow').classList.toggle('show-after');
+            document.getElementById('js-bgWrap').classList.toggle('show-after');
+        }
+
+        function actionWindowClose() {
+            document.getElementById('js-modalWindow').classList.remove('show');
+            document.getElementById('js-bgWrap').classList.remove('show');
+            document.getElementById('js-modalWindow').classList.remove('close-before');
+            document.getElementById('js-bgWrap').classList.remove('close-before');
+            document.getElementById('js-modalWindow').classList.remove('show-after');
+            document.getElementById('js-bgWrap').classList.remove('show-after');
+        };
+
+        function actionWindowCloseBefore() {
+            document.getElementById('js-modalWindow').classList.add('close-before');
+            document.getElementById('js-bgWrap').classList.add('close-before');
+        }
+
+        addEventListener('DOMContentLoaded', function () {
+            init();
+        });
+
+    })(window);
 </script>
 <!-- /JavaScript -->
-
-    <div>
-        <button class="switch">BUTTON</button>
-    </div>
 
 </body>
 </html>
