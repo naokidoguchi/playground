@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>スマートなモーダルウィンドウ</title>
+</head>
+<body>
+<!-- CSS -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .conainer {
+        width: 100%;
+        height: 100%;
+    }
+    .switch {
+        display: block;
+        margin: 200px auto 0;
+        width: 100px;
+        height: 100px;
+    }
+    .filter {
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+    /* モーダルウィンドウ */
+    .contents {
+        display: none;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: 500px;
+        height: 300px;
+        padding: 50px 0;
+        text-align: center;
+        background: #c5f7ff;
+        border: 5px solid #6a7498;
+        border-radius: 5px;
+        box-shadow: 2px 10px 10px #000000;
+        overflow: hidden;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+    .text-box {
+        color: black;
+    }
+    .close {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #6a7498;
+    }
+    .text-box {
+        padding: 10px;
+    }
+    /* 表示 */
+    .show {
+        display: block;
+        opacity: 0;
+    }
+    .show-after {
+        opacity: 1;
+    }
+    .close-before {
+        opacity: 0;
+    }
+</style>
+<!-- /CSS -->
+
+    <div class="container">
+        <button id="js-switch" class="switch">button</button>
+        <div id="js-filter" class="filter"></div>
+        <div id="js-modal-window" class="contents">
+            <span id="js-close" class="close">×</span>
+            <p class="text-box">
+                モーダルの中身モーダルの中身モーダルの中身モーダルの中身<br>
+                モーダルの中身モーダルの中身モーダルの中身モーダルの中身<br>
+                * * * * * * * * * * * * * * * * * * * * * * * *
+            </p>
+            <img src="../carousels/img/haro4.jpg" width="250" height="140" alt="">
+            <p class="text-box">
+                * * * * * * * * * * * * * * * * * * * * * * *<br>
+                モーダルの中身モーダルの中身モーダルの中身モーダルの中身<br>
+                モーダルの中身モーダルの中身モーダルの中身モーダルの中身
+            </p>
+        </div>
+    </div>
+
+<!-- JavaScript -->
+<script>
+    ;(function(window) {
+        var modal = document.getElementById('js-modal-window'),
+            filter = document.getElementById('js-filter'),
+            close = document.getElementById('js-close'),
+            btn = document.getElementById('js-switch');
+
+        function init() {
+            btn.addEventListener('click', function() {
+                actionWindowOpen();
+            });
+
+            close.addEventListener('click', function() {
+                actionWindowCloseBefore();
+                setTimeout(function() {
+                    actionWindowClose();
+                }, 500);
+            });
+
+            filter.addEventListener('click', function() {
+                actionWindowCloseBefore();
+                filter.addEventListener('webkitTransitionEnd', end);
+            });
+        };
+
+        function end() {
+            actionWindowClose();
+            filter.removeEventListener('webkitTransitionEnd', end);
+        }
+
+        function actionWindowOpen() {
+            modal.classList.add('show');
+            filter.classList.add('show');
+            // 最初が効かない...
+            requestAnimationFrame(function() {
+                actionWindowOpenAfter();
+            });
+        };
+
+        function actionWindowOpenAfter() {
+            modal.classList.add('show-after');
+            filter.classList.add('show-after');
+        }
+        
+        function actionWindowClose() {
+            modal.classList.remove('show');
+            filter.classList.remove('show');
+            modal.classList.remove('close-before');
+            filter.classList.remove('close-before');
+            modal.classList.remove('show-after');
+            filter.classList.remove('show-after');
+        };
+
+        function actionWindowCloseBefore() {
+            modal.classList.add('close-before');
+            filter.classList.add('close-before');
+        }
+
+        addEventListener('DOMContentLoaded', function () {
+            init();
+        });
+
+    })(window);
+</script>
+<!-- /JavaScript -->
+</body>
+</html>
