@@ -6,8 +6,12 @@ gulp.task('webserver', function () {
     .pipe(webserver({
         host: 'localhost',
         port: 8000,
+<<<<<<< HEAD
         livereload: true,
         open: true
+=======
+        livereload: true
+>>>>>>> origin/master
     }));
 });
 

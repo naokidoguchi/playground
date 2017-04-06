@@ -10,8 +10,11 @@
   "license": "ISC",
   "dependencies": {
     "gulp-install": "^0.6.0"
+<<<<<<< HEAD
   },
   "devDependencies": {
     "gulp-webserver": "^0.9.1"
+=======
+>>>>>>> origin/master
   }
 }
