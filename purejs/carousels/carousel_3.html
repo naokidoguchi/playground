@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>カルーセル3</title>
+</head>
+<body>
+
+<!-- CSS -->
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #62616f;
+}
+.viewArea {
+    width: 1200px;
+    height: 300px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+.carousel-move {
+    width: 10000px;
+    display: flex;
+    justify-content: flex-start;
+}
+.carousel-item {
+    width: 1200px;
+    height: 300px;
+    list-style-type: none;
+}
+@keyframes slide-animation {
+    0%{
+        /*-webkit-transform:translateX(0);
+        transform:translateX(0);*/
+        opacity: 0;
+    }
+    50%{
+        /*-webkit-transform:translateX(-1200px);
+        transform:translateX(-1200px);*/
+        opacity: 1;
+    }
+    100%{
+        /*-webkit-transform:translateX(-1200px);
+        transform:translateX(-1200px);*/
+        opacity: 0;
+    }
+}
+.red {
+    background: lightcoral;
+}
+.red:after {
+    color: darkred;
+    content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut"
+}
+.blue {
+    background: lightblue;
+}
+.blue:after {
+    color: darkblue;
+    content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut"
+}
+.yellow {
+    background: lightyellow;
+}
+.yellow:after {
+    color: darkgoldenrod;
+    content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut"
+}
+.green {
+    background: lightgreen;
+}
+.green:after {
+    color: darkgreen;
+    content: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend sapien. Vestibulum purus quam, scelerisque ut, mollis sed, nonummy id, metus. Nullam accumsan lorem in dui. Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In ac dui quis mi consectetuer lacinia. Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum. Sed aliquam ultrices mauris. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Praesent adipiscing. Phasellus ullamcorper ipsum rutrum nunc. Nunc nonummy metus. Vestibulum volutpat pretium libero. Cras id dui. Aenean ut"
+}
+.left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    height: 100%;
+}
+.right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 100%;
+}
+.prev {
+    width: 34px;
+    height: 52px;
+    background-size: 68px 52px;
+    background-image: url(img/carousel.png); 
+    outline: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: block;
+}
+.next {
+    width: 34px;
+    height: 52px;
+    background-size: 68px 52px;
+    background-image: url(img/carousel.png);
+    background-position: 34px 0;
+    outline: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    display: block;
+}
+.clickArea {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+</style>
+<!-- /CSS -->
+<div class="wrap">
+    <div class="viewArea">
+        <ul id="js-carousel" class="carousel-move" data-carousel-wait="3000">
+            <li class="carousel-item js-carousel-item red"></li>
+            <li class="carousel-item js-carousel-item blue"></li>
+            <li class="carousel-item js-carousel-item yellow"></li>
+            <li class="carousel-item js-carousel-item green"></li>
+        </ul>
+        <div id="btnArea">
+            <div class="left">
+                <a id="prev" class="clickArea" href="#">
+                    <i class="prev"></i>
+                </a>
+            </div>
+            <div class="right">
+                <a id="next" class="clickArea" href="#">
+                    <i class="next"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- JavaScript -->
+<script>
+;(function(window) {
+    var imgs, imgLi, wait, move, n, insertElement, pr, ne, listFirst, listNext, c, li;
+
+    function init() {
+        imgs = document.getElementById('js-carousel');
+        imgLi = document.getElementsByClassName('js-carousel-item');
+        pr = document.getElementById('prev');
+        ne = document.getElementById('next')
+        pr.addEventListener('click', clickPrev, false);
+        ne.addEventListener('click', clickNext, false);
+        c = 0;
+        lists = imgLi.length-1;
+        setCarouselEvent(imgLi.length-1, 1);
+    }
+
+    function setCarouselEvent(max, i) {
+        wait = Number(imgs.getAttribute('data-carousel-wait')) || 1500;
+        n = 0;
+        countUp();
+        intervalID = setInterval(countUp, wait);
+    }
+
+    function countUp() {
+        if(n < lists) {
+            n++;
+        } else if(n == lists) {
+            n = 0;
+        }
+        insertElement = imgLi[lists];
+        imgs.insertBefore(insertElement, imgs.firstChild);
+        listFirst = imgs.firstChild;
+        listFirst.style.webkitAnimation = 'slide-animation ' + wait +'ms infinite ease';
+    }
+
+    function clickPrev() {
+        // clearInterval(intervalID);
+        if(c >= 0) {
+            imgs.style.webkitTransform = 'translateX('+ -(c * 1200) +'px)';
+            c--;
+        } else {
+            c = lists;
+        }
+    }
+
+    function clickNext() {
+        // clearInterval(intervalID);
+        if(c <= lists) {
+            imgs.style.webkitTransform = 'translateX('+ -(c * 1200) +'px)';
+            c++;
+        } else {
+            c = 0;
+        }
+    }
+
+    addEventListener('DOMContentLoaded', function() {
+        init();
+    });
+
+})(window);
+</script>
+<!--/JavaScript-->
+</body>
+</html>

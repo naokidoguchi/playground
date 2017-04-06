@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <section>
+    <div class="textarea">
+      <textarea id="inputArea" name="comment" rows="4" cols="40" placeholder="コメント入力"></textarea>
+      <span type="text" id="num"></span>/40
+    </div>
+  </section>
+  
+  <style>
+    .textarea {
+      text-align: center;
+    }
+  </style>
+
+
+  <script>
+    ;(function(window) {
+
+      'use strict'
+
+      function init() {
+        addEventListener('keyup', inputArea(), false);
+      }
+
+      function inputArea() {
+        var num = document.getElementById('inputArea').innerHTML.length;
+        document.getElementById('num').innerHTML = Number(num);
+      }
+
+      addEventListener('DOMContentLoaded', function(){
+        init();
+      });
+    })(window);
+  </script>
+
+</body>
+</html>
