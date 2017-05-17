@@ -1,0 +1,46 @@
+{
+
+  "author": "<ReferenceError: author is not defined>",
+  "text": "<ReferenceError: text is not defined>",
+  "guid": "8f9b9792-c0fc-475f-b9d5-42b5b20afed0",
+  "isActive": true,
+  "balance": "$2,773.06",
+  "picture": "http://placehold.it/32x32",
+  "age": 38,
+  "eyeColor": "green",
+  "name": "Debbie Clark",
+  "gender": "female",
+  "company": "GRONK",
+  "email": "debbieclark@gronk.com",
+  "phone": "+1 (814) 559-2348",
+  "address": "900 Forbell Street, Dubois, Virginia, 4174",
+  "about": "Eiusmod sint tempor nostrud sit aliquip. Esse sit voluptate pariatur in. Dolor ullamco in tempor consectetur.\r\n",
+  "registered": "2014-09-28T02:49:29 -09:00",
+  "latitude": 79.804551,
+  "longitude": 92.725638,
+  "tags": [
+    "proident",
+    "est",
+    "sit",
+    "dolore",
+    "occaecat",
+    "in",
+    "pariatur"
+  ],
+  "friends": [
+    {
+      "id": 0,
+      "name": "Huffman Phelps"
+    },
+    {
+      "id": 1,
+      "name": "Dorsey Neal"
+    },
+    {
+      "id": 2,
+      "name": "Joanna Cantrell"
+    }
+  ],
+  "greeting": "Hello, Debbie Clark! You have 3 unread messages.",
+  "favoriteFruit": "strawberry"
+}
