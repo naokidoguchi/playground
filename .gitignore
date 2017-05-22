@@ -1,0 +1,7 @@
+wp
+*.swo
+.DS_Store
+*~
+*#
+.#*
+node_modules
