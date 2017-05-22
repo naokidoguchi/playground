@@ -1,0 +1,11 @@
+* {
+  color: gray;
+  text-align: center;  
+}
+nav {
+  width: 250px;
+  margin: 0 auto;
+}
+nav li {
+  list-style-type: decimal;
+}

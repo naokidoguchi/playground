@@ -1,0 +1,21 @@
+{
+  "name": "love-pug",
+  "version": "1.0.0",
+  "description": "i love pug",
+  "main": "index.js",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "keywords": [
+    "pug"
+  ],
+  "author": "j2complexed",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.5",
+    "gulp": "^3.9.1",
+    "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.2.0",
+    "node-notifier": "^4.6.1"
+  }
+}
