@@ -6,10 +6,10 @@ html(lang="ja")
 
   body(class=key)
     .l_contents
-      include include/_inc_header.pug
-      include include/_inc_nav.pug
-      //- 
+      include include/contents/_inc_header.pug
+      include include/contents/_inc_nav.pug
+      //-
         ブロックにvarsやcontentsという名前をつけといて
         あとで読み込むことができる。
       block contents
-    include include/_inc_footer.pug
+    include include/contents/_inc_footer.pug

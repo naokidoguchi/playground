@@ -20,7 +20,7 @@ gulp.task('browser-sync', () => {
             baseDir: "./"
         }
     });
-    gulp.watch("./html/*.html", browserSync.reload);
+    gulp.watch("html/*.html", browserSync.reload);
 });
 
 gulp.task('views', function() {
