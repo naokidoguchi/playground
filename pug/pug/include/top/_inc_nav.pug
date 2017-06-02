@@ -1,13 +1,7 @@
 nav
   ul
-    li
-      a(href=pages.content_a.url) aのリンク
-    li
-      a(href=pages.content_b.url) bのリンク
-    li
-      a(href=pages.content_c.url) cのリンク
-    if content_d_state == "public"
+    - var list = ["a", "b", "c", "d"]
+    
+    each item in list
       li
-        a(href=page.content_d.url) 公開後のリンク
-    else if content_d_state == "comingsoon"
-      li Coming Soon
+        a(href="content_"+item+".html")= item+"ページ"

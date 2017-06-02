@@ -5,9 +5,18 @@ block vars
   include ../_config.pug
   - var key = 'top'
   - var page = pages[key]
+  - var dog_num = 1
 
 block contents
   h2 #{page.title}
-  .keyvisual_container
-    p.keyvisual_image
-      img(src=image_path+"/pug.jpg", alt="", width="120")
+  .container
+  case dog_num
+    when 0
+      p 犬が0匹
+    when 1
+      p 犬が1匹 ∪・ω・∪
+      p: img(src=image_path+"/pug.jpg", alt="", width="120")
+    default
+      p 犬が#{dog_num}匹 ∪・ω・∪
+
+      
