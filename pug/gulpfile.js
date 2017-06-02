@@ -24,7 +24,7 @@ gulp.task('browser-sync', () => {
 });
 
 gulp.task('views', function() {
-  return gulp.src(['./*.pug', '!./_*.pug'])
+  return gulp.src(['pug/*.pug', '!./_*.pug'])
     .pipe(plumber({errorHandler: errorHandler}))
     .pipe(pug({pretty: true}))
     .pipe(gulp.dest('./html/'));
