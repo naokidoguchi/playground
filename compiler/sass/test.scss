@@ -1,0 +1,13 @@
+@charset 'utf-8';
+@import 'common';
+
+body {
+    color: rgb(97, 211, 219);
+    font-size: 30px;
+    p {
+        &::after {
+            content: '♪';
+            display: inline-block;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@charset "UTF-8";
+html {
+  height: 100%; }
+
+body {
+  height: 100%;
+  background: blue; }
+
+body {
+  color: #61d3db;
+  font-size: 30px; }
+  body p::after {
+    content: '♪';
+    display: inline-block; }
