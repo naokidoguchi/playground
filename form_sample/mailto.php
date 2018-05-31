@@ -10,7 +10,11 @@
         $lang = 'ja';
         // 三項演算子
         echo $lang == 'ja' ? '<script>alert("ありがとうございます！");</script>' : '<script>alert("THANX!");</script>';
-    ?> 
+    ?>
+    <p>送信されました！営業日の10日以内にお返事します。</p>
+    <div>
+        <a href="/regist.html">フォームに戻る</a>
+    </div> 
 </body>
 </html>
 
